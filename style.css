@@ -44,3 +44,22 @@ button {
 button:hover {
     background-color: darkgreen;
 }
+body {
+    font-family: Arial;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    margin: auto;
+    width: 300px;
+    border-radius: 10px;
+}
+
+button {
+    background: green;
+    color: white;
+    padding: 8px;
+}
