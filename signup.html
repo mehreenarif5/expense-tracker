@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📝 Create Account</h1>
+
+    <input type="text" id="newUser" placeholder="Enter Username"><br><br>
+
+    <div style="position:relative;">
+    <input type="password" id="newPass" placeholder="Enter Password">
+    <i class="fa fa-eye" onclick="togglePassword('newPass', this)" 
+       style="position:absolute; right:10px; top:10px; cursor:pointer;"></i>
+</div>
+<br><br>
+
+<div style="position:relative;">
+    <input type="password" id="confirmPass" placeholder="Confirm Password">
+    <i class="fa fa-eye" onclick="togglePassword('confirmPass', this)" 
+       style="position:absolute; right:10px; top:10px; cursor:pointer;"></i>
+</div>
+<br><br>
+
+    <button onclick="signup()">Signup</button>
+
+    <p>Already have account? <a href="login.html">Login</a></p>
+
+</div>
+
+<script>
+function signup() {
+    let user = document.getElementById("newUser").value;
+    let pass = document.getElementById("newPass").value;
+    let confirm = document.getElementById("confirmPass").value;
+
+    if (!user || !pass || !confirm) {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    // ✅ NEW CHECK
+    if (pass !== confirm) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    localStorage.setItem("username", user);
+    localStorage.setItem("password", pass);
+
+    alert("Signup Successful ✅");
+
+    window.location.href = "login.html";
+}
+function togglePassword(id, icon) {
+    let input = document.getElementById(id);
+
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
+</script>
+
+</body>
+</html>
