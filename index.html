@@ -13,48 +13,100 @@
     <h1>💰 Expense Tracker</h1>
 
     <button onclick="toggleDarkMode()" id="modeBtn">🌙 Dark Mode</button>
+
+    <!-- 🔍 SEARCH -->
     <input type="text" id="search" placeholder="Search..." onkeyup="searchExpenses()">
-    
 
-    <input type="text" id="desc" placeholder="Enter description">
+    <!-- 🏠 HOME SECTION -->
+    <div id="homeSection">
 
-    <input type="number" id="amount" placeholder="Enter amount">
+        <input type="text" id="desc" placeholder="Enter description">
 
-    <input type="date" id="date">
+        <input type="number" id="amount" placeholder="Enter amount">
 
-    <select id="category">
-        <option value="">Select Category</option>
-        <option value="Food">Food</option>
-        <option value="Shopping">Shopping</option>
-        <option value="Travel">Travel</option>
-    </select>
- 
-    <button onclick="addExpense()">➕ Add Expense</button>
+        <input type="date" id="date">
 
-    <h2>Expenses</h2>
-    <div id="expense-list"></div>
+        <select id="category">
+            <option value="">Select Category</option>
+            <option value="Food">Food</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Travel">Travel</option>
+        </select>
 
-    <h3>Total: Rs <span id="total">0</span></h3>
-    <h3 id="monthlySummary">Monthly Total: Rs 0</h3>
-     <canvas id="myChart" width="300" height="300"></canvas>
-     <div class="bottom-nav">
-    <div><i class="fas fa-home"></i></div>
-    <div><i class="fas fa-chart-pie"></i></div>
-    <div><i class="fas fa-cog"></i></div>
+        <button onclick="addExpense()">➕ Add Expense</button>
+
+        <h2>Expenses</h2>
+        <div id="expense-list"></div>
+
+        <h3>Total: Rs <span id="total">0</span></h3>
+        <h3 id="monthlySummary">Monthly Total: Rs 0</h3>
+
+    </div>
+
+    <!-- 📊 CHART SECTION -->
+    <div id="chartSection" style="display:none;">
+        <canvas id="myChart" width="300" height="300"></canvas>
+    </div>
+
+    <!-- ⚙️ SETTINGS SECTION -->
+    <div id="settingsSection" style="display:none;">
+        <h2>👤 User Profile</h2>
+
+<div id="profileBox">
+    <p><strong>Username:</strong> <span id="profileName"></span></p>
+
+    <input type="text" id="newName" placeholder="Change username">
+
+    <button onclick="updateProfile()">Update Profile</button>
 </div>
-<button onclick="clearAllExpenses()">🗑 Clear All</button>
-    <button onclick="exportData()">📤 Export Data</button>
-    <button onclick="logout()">🚪 Logout</button>
-<button class="fab" onclick="addExpense()">➕</button>
+<h3>📸 Profile Picture</h3>
+
+<input type="file" id="profilePic" accept="image/*">
+
+<br><br>
+
+<img id="profilePreview" src="" width="80" style="border-radius:50%; display:none;">
+        <button onclick="clearAllExpenses()">🗑 Clear All</button>
+        <button onclick="exportData()">📤 Export Data</button>
+        <button onclick="logout()">🚪 Logout</button>
+    </div>
+
+    <!-- 📱 BOTTOM NAV -->
+    <div class="bottom-nav">
+        <div onclick="showSection('home')"><i class="fas fa-home"></i></div>
+        <div onclick="showSection('chart')"><i class="fas fa-chart-pie"></i></div>
+        <div onclick="showSection('settings')"><i class="fas fa-cog"></i></div>
+    </div>
+
+    <!-- ➕ FLOAT BUTTON -->
+    <button class="fab" onclick="addExpense()">➕</button>
+
 </div>
+
 <script>
 if (localStorage.getItem("loggedIn") !== "true") {
     window.location.href = "login.html";
 }
+
+// ✅ NEW FUNCTION (tabs working)
+function showSection(section) {
+    document.getElementById("homeSection").style.display = "none";
+    document.getElementById("chartSection").style.display = "none";
+    document.getElementById("settingsSection").style.display = "none";
+
+    if (section === "home") {
+        document.getElementById("homeSection").style.display = "block";
+    }
+    else if (section === "chart") {
+        document.getElementById("chartSection").style.display = "block";
+        updateChart(); // important
+    }
+    else if (section === "settings") {
+        document.getElementById("settingsSection").style.display = "block";
+    }
+}
 </script>
-
-
 
 <script src="script.js"></script>
 </body>
-</html>   
+</html>
