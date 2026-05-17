@@ -107,8 +107,15 @@ window.onload = function () {
     displayExpenses();
     updateMonthlySummary();
     updateChart();
-
+loadProfile();
     document.getElementById("date").valueAsDate = new Date();
+    let savedPic = localStorage.getItem("profilePic");
+
+if (savedPic) {
+    let img = document.getElementById("profilePreview");
+    img.src = savedPic;
+    img.style.display = "block";
+}
 };
 
 function updateChart() {
@@ -247,4 +254,47 @@ function goHome() {
     document.getElementById("settingsSection").style.display = "none";
 }
 
- 
+ // Load profile
+function loadProfile() {
+    let user = localStorage.getItem("username");
+
+    if (user) {
+        document.getElementById("profileName").innerText = user;
+    }
+}
+
+// Update profile
+function updateProfile() {
+    let newName = document.getElementById("newName").value;
+
+    if (!newName) {
+        alert("Enter new username!");
+        return;
+    }
+
+    localStorage.setItem("username", newName);
+    document.getElementById("profileName").innerText = newName;
+
+    alert("Profile Updated ✅");
+
+    document.getElementById("newName").value = "";
+}
+document.getElementById("profilePic").addEventListener("change", function () {
+    let file = this.files[0];
+
+    if (file) {
+        let reader = new FileReader();
+
+        reader.onload = function (e) {
+            let img = document.getElementById("profilePreview");
+
+            img.src = e.target.result;
+            img.style.display = "block";
+
+            // save in localStorage
+            localStorage.setItem("profilePic", e.target.result);
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
