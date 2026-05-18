@@ -194,3 +194,70 @@ input, select {
     margin-top: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+/* ===== MOBILE RESPONSIVE FIX ===== */
+@media (max-width: 480px) {
+
+    .container {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input, select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #expense-list div {
+        font-size: 14px;
+    }
+}
+
+/* ===== LIGHTER BACKGROUND (sir ka suggestion) ===== */
+body {
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+}
+
+/* ===== CARD IMPROVE ===== */
+.container {
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== EXPENSE CARD MODERN ===== */
+#expense-list div {
+    border-left: 5px solid #4facfe;
+}
+
+/* ===== BUTTON MODERN LOOK ===== */
+button {
+    background: linear-gradient(to right, #4facfe, #00c6ff);
+}
+
+/* ===== FAB IMPROVE ===== */
+.fab {
+    background: #00c853;
+}
+
+/* ===== BOTTOM NAV FULL WIDTH (mobile fix) ===== */
+.bottom-nav {
+    width: 100%;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+}
+
+/* ===== ICON ACTIVE EFFECT ===== */
+.bottom-nav div:active {
+    transform: scale(0.9);
+    color: #4facfe;
+}
