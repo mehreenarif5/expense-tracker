@@ -224,7 +224,7 @@ input, select {
 
 /* ===== LIGHTER BACKGROUND (sir ka suggestion) ===== */
 body {
-    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+    background: linear-gradient(to right, #dae4f5, #c2e9fb);
 }
 
 /* ===== CARD IMPROVE ===== */
@@ -245,7 +245,7 @@ button {
 
 /* ===== FAB IMPROVE ===== */
 .fab {
-    background: #00c853;
+    background: #5afd9b;
 }
 
 /* ===== BOTTOM NAV FULL WIDTH (mobile fix) ===== */
@@ -259,5 +259,5 @@ button {
 /* ===== ICON ACTIVE EFFECT ===== */
 .bottom-nav div:active {
     transform: scale(0.9);
-    color: #4facfe;
+    color: #ddebf7;
 }
