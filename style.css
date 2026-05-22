@@ -126,11 +126,12 @@ h3 {
     display: block;
 }
 .container {
-    max-width: 400px;
+    width: 95%;
+    max-width: 500px;
     margin: 20px auto;
+    padding: 20px;
     border-radius: 20px;
 }
-
 /* Mobile feel */
 body {
     display: flex;
@@ -261,7 +262,6 @@ button {
     transform: scale(0.9);
     color: #ddebf7;
 }
-
 /* ===== MOBILE FIX ===== */
 @media screen and (max-width: 480px) {
 
@@ -306,3 +306,17 @@ button {
         bottom: 80px;
     }
 }
+@media screen and (max-width: 480px) {
+
+    .container {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        padding: 15px;
+        min-height: 100vh;
+    }
+
+    body {
+        padding: 0;
+    }
+}ss
