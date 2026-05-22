@@ -261,3 +261,48 @@ button {
     transform: scale(0.9);
     color: #ddebf7;
 }
+
+/* ===== MOBILE FIX ===== */
+@media screen and (max-width: 480px) {
+
+    body {
+        background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+        padding: 10px;
+    }
+
+    .container {
+        width: 95%;
+        max-width: 100%;
+        margin: 10px auto;
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    input,
+    select,
+    button {
+        font-size: 16px;
+        padding: 14px;
+    }
+
+    #expense-list div {
+        font-size: 15px;
+        padding: 15px;
+    }
+
+    .bottom-nav {
+        width: 100%;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+    }
+
+    .fab {
+        right: 20px;
+        bottom: 80px;
+    }
+}
