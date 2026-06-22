@@ -3,67 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="/static/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
+
     <h1>🔐 Login</h1>
- 
-    <input type="text" id="user" placeholder="Username"><br><br>
-   <div style="position:relative;">
-    <input type="password" id="pass" placeholder="Password">
-    <i class="fa fa-eye" onclick="togglePassword('pass', this)" 
-       style="position:absolute; right:10px; top:10px; cursor:pointer;"></i>
-</div>
-<br><br>
 
-    <button onclick="login()">Login</button>
+    <form action="/login" method="POST">
 
-    <p>Don't have account? <a href="signup.html">Signup</a></p>
+        <input type="text"
+               name="username"
+               placeholder="Username"
+               required>
+
+        <br><br>
+
+        <div style="position:relative;">
+
+            <input type="password"
+                   id="pass"
+                   name="password"
+                   placeholder="Password"
+                   required>
+
+            <i class="fa fa-eye"
+               onclick="togglePassword('pass', this)"
+               style="position:absolute; right:10px; top:10px; cursor:pointer;">
+            </i>
+
+        </div>
+
+        <br><br>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p>Don't have an account?
+        <a href="/signup">Signup</a>
+    </p>
+
 </div>
 
 <script>
-function login() {
-    let user = document.getElementById("user").value;
-    let pass = document.getElementById("pass").value;
 
-    let savedUser = localStorage.getItem("username");
-    let savedPass = localStorage.getItem("password");
+function togglePassword(id, icon){
 
-    // ✅ ADD THIS (better validation)
-    if (!user || !pass) {
-        alert("Please fill all fields!");
-        return;
-    }
-
-    // ✅ ADD THIS (signup na ho to)
-    if (!savedUser || !savedPass) {
-        alert("No account found! Please signup first.");
-        return;
-    }
-
-    if (user === savedUser && pass === savedPass) {
-        localStorage.setItem("loggedIn", "true");
-        window.location.href = "index.html";
-    } else {
-        alert("Wrong Credentials");
-    }
-}
-function togglePassword(id, icon) {
     let input = document.getElementById(id);
 
-    if (input.type === "password") {
+    if(input.type === "password"){
+
         input.type = "text";
+
         icon.classList.remove("fa-eye");
         icon.classList.add("fa-eye-slash");
-    } else {
+
+    }
+    else{
+
         input.type = "password";
+
         icon.classList.remove("fa-eye-slash");
         icon.classList.add("fa-eye");
+
     }
+
 }
+
 </script>
 
 </body>

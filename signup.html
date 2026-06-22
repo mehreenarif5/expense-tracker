@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Signup</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="/static/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -12,65 +13,101 @@
 
     <h1>📝 Create Account</h1>
 
-    <input type="text" id="newUser" placeholder="Enter Username"><br><br>
+    <form action="/signup" method="POST">
 
-    <div style="position:relative;">
-    <input type="password" id="newPass" placeholder="Enter Password">
-    <i class="fa fa-eye" onclick="togglePassword('newPass', this)" 
-       style="position:absolute; right:10px; top:10px; cursor:pointer;"></i>
-</div>
-<br><br>
+        <input type="text"
+               name="username"
+               placeholder="Enter Username"
+               required>
 
-<div style="position:relative;">
-    <input type="password" id="confirmPass" placeholder="Confirm Password">
-    <i class="fa fa-eye" onclick="togglePassword('confirmPass', this)" 
-       style="position:absolute; right:10px; top:10px; cursor:pointer;"></i>
-</div>
-<br><br>
+        <br><br>
 
-    <button onclick="signup()">Signup</button>
+        <div style="position:relative;">
 
-    <p>Already have account? <a href="login.html">Login</a></p>
+            <input type="password"
+                   id="newPass"
+                   name="password"
+                   placeholder="Enter Password"
+                   required>
+
+            <i class="fa fa-eye"
+               onclick="togglePassword('newPass', this)"
+               style="position:absolute; right:10px; top:10px; cursor:pointer;">
+            </i>
+
+        </div>
+
+        <br><br>
+
+        <div style="position:relative;">
+
+            <input type="password"
+                   id="confirmPass"
+                   placeholder="Confirm Password"
+                   required>
+
+            <i class="fa fa-eye"
+               onclick="togglePassword('confirmPass', this)"
+               style="position:absolute; right:10px; top:10px; cursor:pointer;">
+            </i>
+
+        </div>
+
+        <br><br>
+
+        <button type="submit" onclick="return checkPassword()">
+            Signup
+        </button>
+
+    </form>
+
+    <p>Already have account?
+        <a href="/login">Login</a>
+    </p>
 
 </div>
 
 <script>
-function signup() {
-    let user = document.getElementById("newUser").value;
-    let pass = document.getElementById("newPass").value;
-    let confirm = document.getElementById("confirmPass").value;
 
-    if (!user || !pass || !confirm) {
-        alert("Please fill all fields!");
-        return;
-    }
+function checkPassword(){
 
-    // ✅ NEW CHECK
-    if (pass !== confirm) {
+    let pass=document.getElementById("newPass").value;
+    let confirm=document.getElementById("confirmPass").value;
+
+    if(pass!==confirm){
+
         alert("Passwords do not match!");
-        return;
+        return false;
+
     }
 
-    localStorage.setItem("username", user);
-    localStorage.setItem("password", pass);
+    return true;
 
-    alert("Signup Successful ✅");
-
-    window.location.href = "login.html";
 }
-function togglePassword(id, icon) {
-    let input = document.getElementById(id);
 
-    if (input.type === "password") {
-        input.type = "text";
+function togglePassword(id,icon){
+
+    let input=document.getElementById(id);
+
+    if(input.type==="password"){
+
+        input.type="text";
+
         icon.classList.remove("fa-eye");
         icon.classList.add("fa-eye-slash");
-    } else {
-        input.type = "password";
+
+    }
+    else{
+
+        input.type="password";
+
         icon.classList.remove("fa-eye-slash");
         icon.classList.add("fa-eye");
+
     }
+
 }
+
 </script>
 
 </body>
